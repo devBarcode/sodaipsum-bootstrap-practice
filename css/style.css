@@ -1,0 +1,652 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap");
+
+/* || RESET */
+
+body {
+  min-height: 100vh;
+}
+
+strong,
+em {
+  font-style: normal;
+  font-weight: normal;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* || VARIABLES */
+
+/* colors */
+
+/* color usage guide: hsl(var(--color)); -or- hsla(var(--color)); */
+/* I found this useful so I can switch to hsl or hsla whenever I want */
+/* see the full palette in the img/design-material folder */
+
+/* the color were created using a combination from coolors.co for the palette */
+/* and uicolors.app for the tints and shades */
+/* --si- stands for SodaIpsum */
+
+:root {
+  /* brand color percentage */
+  --si-brand-color-mandy-50: 0, 86%, 97%;
+  --si-brand-color-mandy-100: 3, 85%, 95%;
+  --si-brand-color-mandy-200: 357, 84%, 90%;
+  --si-brand-color-mandy-300: 357, 85%, 82%;
+  --si-brand-color-mandy-400: 356, 84%, 71%;
+  --si-brand-color-mandy-500: 354, 79%, 63%;
+  --si-brand-color-mandy-600: 351, 69%, 50%;
+  --si-brand-color-mandy-700: 350, 73%, 41%;
+  --si-brand-color-mandy-800: 348, 71%, 35%;
+  --si-brand-color-mandy-900: 345, 66%, 30%;
+  --si-brand-color-mandy-950: 347, 78%, 16%;
+  /* secondary color percentage */
+  --si-celadon-green-50: 133, 43%, 96%;
+  --si-celadon-green-100: 131, 41%, 90%;
+  --si-celadon-green-200: 137, 40%, 80%;
+  --si-celadon-green-300: 139, 37%, 66%;
+  --si-celadon-green-400: 142, 34%, 52%;
+  --si-celadon-green-500: 143, 43%, 39%;
+  --si-celadon-green-600: 145, 48%, 30%;
+  --si-celadon-green-700: 146, 48%, 24%;
+  --si-celadon-green-800: 147, 47%, 20%;
+  --si-celadon-green-900: 147, 45%, 16%;
+  --si-celadon-green-950: 150, 48%, 9%;
+  /* tertiary color percentage */
+  --si-selective-yellow-50: 54, 100%, 96%;
+  --si-selective-yellow-100: 52, 100%, 89%;
+  --si-selective-yellow-200: 53, 100%, 76%;
+  --si-selective-yellow-300: 50, 100%, 64%;
+  --si-selective-yellow-400: 48, 100%, 55%;
+  --si-selective-yellow-500: 41, 100%, 53%;
+  --si-selective-yellow-600: 35, 100%, 44%;
+  --si-selective-yellow-700: 29, 98%, 37%;
+  --si-selective-yellow-800: 26, 90%, 31%;
+  --si-selective-yellow-900: 25, 84%, 26%;
+  --si-selective-yellow-950: 24, 100%, 14%;
+  /* neutrals color percentage */
+  --si-fuscous-gray-50: 180, 5%, 96%;
+  --si-fuscous-gray-100: 160, 6%, 90%;
+  --si-fuscous-gray-200: 168, 5%, 82%;
+  --si-fuscous-gray-300: 172, 5%, 69%;
+  --si-fuscous-gray-400: 170, 5%, 53%;
+  --si-fuscous-gray-500: 175, 6%, 43%;
+  --si-fuscous-gray-600: 180, 5%, 36%;
+  --si-fuscous-gray-700: 180, 5%, 31%;
+  --si-fuscous-gray-800: 180, 4%, 27%;
+  --si-fuscous-gray-900: 180, 4%, 24%;
+  --si-fuscous-gray-950: 180, 5%, 15%;
+}
+
+/* //////////////////////////////// */
+
+/* font */
+
+/* fluid type scale calculator: www.fluid-type-scale.com */
+/* fluid font size variables, for browsers that support clamp */
+
+@supports (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --si-fluid-font-size-xsm: clamp(0.48rem, 0.14vw + 0.45rem, 0.56rem);
+    --si-fluid-font-size-sm: clamp(0.6rem, 0.25vw + 0.55rem, 0.75rem);
+    --si-fluid-font-size-base: clamp(0.75rem, 0.42vw + 0.67rem, 1rem);
+    --si-fluid-font-size-md: clamp(0.94rem, 0.66vw + 0.81rem, 1.33rem);
+    --si-fluid-font-size-lg: clamp(1.17rem, 1.01vw + 0.97rem, 1.78rem);
+    --si-fluid-font-size-xl: clamp(1.46rem, 1.51vw + 1.16rem, 2.37rem);
+    --si-fluid-font-size-2xl: clamp(1.83rem, 2.21vw + 1.39rem, 3.16rem);
+    --si-fluid-font-size-3xl: clamp(2.29rem, 3.2vw + 1.65rem, 4.21rem);
+  }
+}
+
+/* fallback variables for browsers that don't support clamp */
+
+@supports not (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --si-fluid-font-size-xsm: 0.48rem;
+    --si-fluid-font-size-sm: 0.6rem;
+    --si-fluid-font-size-base: 0.75rem;
+    --si-fluid-font-size-md: 0.94rem;
+    --si-fluid-font-size-lg: 1.17rem;
+    --si-fluid-font-size-xl: 1.46rem;
+    --si-fluid-font-size-2xl: 1.83rem;
+    --si-fluid-font-size-3xl: 2.29rem;
+  }
+  @media screen and (min-width: 1280px) {
+    :root {
+      --si-fluid-font-size-xsm: 0.56rem;
+      --si-fluid-font-size-sm: 0.75rem;
+      --si-fluid-font-size-base: 1rem;
+      --si-fluid-font-size-md: 1.33rem;
+      --si-fluid-font-size-lg: 1.78rem;
+      --si-fluid-font-size-xl: 2.37rem;
+      --si-fluid-font-size-2xl: 3.16rem;
+      --si-fluid-font-size-3xl: 4.21rem;
+    }
+  }
+}
+
+/* font weights */
+
+:root {
+  --si-font-weight-thin: 100;
+  --si-font-weight-extra-light: 200;
+  --si-font-weight-light: 300;
+  --si-font-weight-regular: 300;
+  --si-font-weight-medium: 400;
+  --si-font-weight-semibold: 600;
+  --si-font-weight-bold: 700;
+  --si-font-weight-extrabold: 800;
+  --si-font-weight-black: 900;
+}
+
+/* font families */
+
+:root {
+  --si-font-nunito-sans: "Nunito Sans", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+  --si-font-inter: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+/* spaces */
+/* made with https://utopia.fyi/space/calculator */
+
+:root {
+  /* space 3xs: 3px → 4px */
+  --space-3xs: clamp(0.1875rem, 0.175rem + 0.0625vw, 0.25rem);
+  /* space 2xs: 6px → 8px */
+  --space-2xs: clamp(0.375rem, 0.35rem + 0.125vw, 0.5rem);
+  /* space xs: 9px → 12px */
+  --space-xs: clamp(0.5625rem, 0.525rem + 0.1875vw, 0.75rem);
+  /* space s: 12px → 16px */
+  --space-s: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+  /* space m: 18px → 24px */
+  --space-m: clamp(1.125rem, 1.05rem + 0.375vw, 1.5rem);
+  /* space l: 24px → 32px */
+  --space-l: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
+  /* space xl: 36px → 48px */
+  --space-xl: clamp(2.25rem, 2.1rem + 0.75vw, 3rem);
+  /* space 2xl: 48px → 64px */
+  --space-2xl: clamp(3rem, 2.8rem + 1vw, 4rem);
+  /* space 3xl: 72px → 96px */
+  --space-3xl: clamp(4.5rem, 4.2rem + 1.5vw, 6rem);
+}
+
+/* shadows */
+/* the fluid shadow goes from 10px → 15px */
+
+:root {
+  --si-shadow-brand-color-x0-y0-b25: 0px 4px 25px
+    hsla(var(--si-brand-color-mandy-950), 0.15);
+  --si-shadow-neutral-color-x15-y15-b0: clamp(
+      0.625rem,
+      0.5114rem + 0.5682vw,
+      0.9375rem
+    )
+    clamp(0.625rem, 0.5114rem + 0.5682vw, 0.9375rem) 0px
+    hsla(var(--si-fuscous-gray-950), 0.15);
+  --si-shadow-brand-color-x15-y15-b0: clamp(
+      0.625rem,
+      0.5114rem + 0.5682vw,
+      0.9375rem
+    )
+    clamp(0.625rem, 0.5114rem + 0.5682vw, 0.9375rem) 0px
+    hsla(var(--si-brand-color-mandy-500), 0.15);
+  --si-shadow-green-color-xn15-y15-b0: clamp(
+      -0.9375rem,
+      -0.5114rem + -0.5682vw,
+      -0.625rem
+    )
+    clamp(0.625rem, 0.5114rem + 0.5682vw, 0.9375rem) 0px
+    hsla(var(--si-celadon-green-950), 0.15);
+  --si-shadow-brand-color-x0-y4-b4: 0px 4px 4px
+    hsla(var(--si-brand-color-mandy-950), 0.1);
+  --si-shadow-neutral-color-x0-y4-b4: 0px 4px 4px
+    hsla(var(--si-fuscous-gray-950), 0.1);
+  --si-shadow-green-color-x0-y4-b4: 0px 4px 4px
+    hsla(var(--si-celadon-green-950), 0.1);
+  --si-shadow-yellow-color-x0-y4-b4: 0px 4px 4px
+    hsla(var(--si-selective-yellow-950), 0.1);
+  --si-shadow-brand-footer-x0-yn5-b25: 0px -5px 25px hsla(var(var(--si-selective-yellow-950)));
+}
+
+/* border radius */
+
+:root {
+  /* 12px → 16px */
+  --border-radius-16: clamp(0.75rem, 0.6591rem + 0.4545vw, 1rem);
+  /* 32px → 24px */
+  --border-radius-32: clamp(1.5rem, 1.3182rem + 0.9091vw, 2rem);
+}
+
+/* //////////////////////////////// */
+
+/* || GENERAL STYLES */
+
+.test {
+  /* class I add for testing purpose */
+  border: 1px solid red;
+}
+
+html {
+  font-family: var(--si-font-inter);
+  font-size: var(--si-fluid-font-size-base);
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  background-color: hsl(var(--si-fuscous-gray-50));
+  color: hsl(var(--si-fuscous-gray-950));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* //////////////////////////////// */
+
+/* || HEADER - NAVIGATION BAR */
+
+.navbar {
+  font-family: var(--si-font-nunito-sans);
+  margin: 0 auto;
+  max-width: 1470px;
+  min-height: 60px;
+}
+
+.navbar-box-shadow {
+  box-shadow: var(--si-shadow-brand-color-x0-y0-b25);
+}
+
+.nav-link-brand {
+  font-size: var(--si-fluid-font-size-md);
+  font-weight: var(--si-font-weight-black);
+}
+
+.nav-link-highlight-color {
+  font-size: var(--si-fluid-font-size-md);
+  font-weight: var(--si-font-weight-bold);
+  color: hsl(var(--si-brand-color-mandy-500));
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link-highlight-color:hover,
+.nav-link-highlight-color:focus-visible,
+.nav-link-highlight-color:focus {
+  color: hsl(var(--si-brand-color-mandy-400));
+}
+
+.nav-link-highlight-color:active {
+  color: hsl(var(--si-brand-color-mandy-600));
+}
+
+/* //////////////////////////////// */
+
+/* || MAIN - GENERAL STYLES */
+
+.hero,
+.made-for-families {
+  background-color: hsla(var(--si-fuscous-gray-50), 0.15); /* fallback */
+  background-image: url(../img/patterns-by-magicpattern/brand-polka-hero-pattern.png);
+  background-size: cover;
+  background-blend-mode: multiply;
+  padding: max(7dvw, 0.5rem) 0;
+}
+
+.container-hero,
+.container-principles,
+.container-families,
+.container-social-proof,
+.container-products {
+  max-width: 1470px;
+}
+
+.card-icon,
+.section-icon {
+  /* 72px → 32px */
+  width: clamp(2rem, 1.0909rem + 4.5455vw, 4.5rem);
+  height: clamp(2rem, 1.0909rem + 4.5455vw, 4.5rem);
+}
+
+/* //////////////////////////////// */
+
+/* || MAIN - HERO SECTION */
+
+.section-h2 {
+  font-family: var(--si-font-nunito-sans);
+  font-size: var(--si-fluid-font-size-xl);
+  color: hsl(var(--si-brand-color-mandy-800));
+  margin-bottom: var(--space-s);
+}
+
+.section-h3 {
+  font-size: var(--si-fluid-font-size-2xl);
+  font-weight: var(--si-font-weight-bold);
+  margin-bottom: var(--space-l);
+  white-space: wrap;
+  text-overflow: ellipsis;
+  max-width: 25ch;
+}
+
+.btn {
+  font-size: var(--si-fluid-font-size-lg);
+  font-weight: var(--si-font-weight-bold);
+  color: hsl(var(--si-fuscous-gray-50));
+  background-color: hsl(var(--si-brand-color-mandy-500));
+  padding: var(--space-xs) var(--space-m);
+  border-radius: var(--border-radius-16);
+  border: none;
+  box-shadow: var(--si-shadow-brand-color-x0-y4-b4);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:focus-visible {
+  color: hsl(var(--si-fuscous-gray-50));
+  background-color: hsl(var(--si-brand-color-mandy-400));
+  box-shadow: var(--si-shadow-brand-color-x0-y4-b4);
+  border: none;
+}
+
+.btn:active:focus,
+.btn:active:hover,
+.btn:active {
+  color: hsl(var(--si-fuscous-gray-50));
+  background-color: hsl(var(--si-brand-color-mandy-600));
+  box-shadow: var(--si-shadow-brand-color-x0-y4-b4);
+  border: none;
+}
+
+.btn-discover-us {
+  max-width: 20ch;
+}
+
+.hero-img-background {
+  background-color: hsl(var(--si-celadon-green-500)); /* fallback */
+  background-image: url(../img/other-materials/pexels-dids-19200810-nature-leaf-1280x1707-compressed.webp);
+  background-size: cover;
+  box-shadow: var(--si-shadow-green-color-xn15-y15-b0);
+  width: 75%;
+}
+
+.hero-img-wrapper {
+  margin-bottom: var(--space-2xl);
+}
+
+.hero-img-shadow {
+  box-shadow: var(--si-shadow-neutral-color-x15-y15-b0);
+}
+
+/* //////////////////////////////// */
+
+/* || MAIN - OUR PRINCIPLES SECTION */
+
+.principles {
+  background-color: hsl(var(--si-fuscous-gray-50)); /* fallback */
+  background-image: url(../img/patterns-by-magicpattern/green-wave-principles-pattern.png),
+    url(../img/gradients/principles-gradient-by-devbarcode.png);
+  background-size: cover, cover;
+  background-blend-mode: multiply, color;
+  padding: max(8dvw, 1rem) 0;
+}
+
+.title-h2 {
+  font-size: var(--si-fluid-font-size-2xl);
+  font-weight: var(--si-font-weight-bold);
+  letter-spacing: 0.01em;
+  margin-bottom: var(--space-l);
+}
+
+.principles-cards {
+  max-width: 1200px;
+}
+
+.card {
+  max-width: 500px;
+  box-shadow: var(--si-shadow-green-color-x0-y4-b4);
+  border-radius: var(--border-radius-32);
+  border: none;
+}
+
+.card-h3 {
+  font-family: var(--si-font-nunito-sans);
+  font-size: var(--si-fluid-font-size-md);
+  font-weight: var(--si-font-weight-bold);
+}
+
+.card-p,
+.card-p-review {
+  font-size: var(--si-fluid-font-size-base);
+  line-height: 1.8em;
+}
+
+.card-link:any-link {
+  font-size: var(--si-fluid-font-size-base);
+  font-weight: var(--si-font-weight-light);
+  color: hsl(var(--si-fuscous-gray-950));
+  text-decoration: none;
+}
+
+/* //////////////////////////////// */
+
+/* || MAIN - "MADE FOR FAMILIES" SECTION */
+
+.section-h2-lg {
+  font-size: var(--si-fluid-font-size-lg);
+}
+
+.section-h3-xl {
+  font-size: var(--si-fluid-font-size-xl);
+  max-width: 30ch;
+}
+
+.section-p {
+  font-size: var(--si-fluid-font-size-base);
+  line-height: 2em;
+}
+
+.bg-families {
+  background-color: hsl(var(--si-fuscous-gray-50));
+  background-image: url(../img/other-materials/pexels-edward-eyer-1066859-family-cola-compressed.webp);
+  background-position: 50% 50%;
+  background-size: cover;
+  box-shadow: var(--si-shadow-brand-color-x15-y15-b0);
+  width: 100%;
+  max-height: 85dvh;
+  aspect-ratio: 2/3;
+}
+
+/* //////////////////////////////// */
+
+/* || MAIN - "OUR SOCIAL PROOF" SECTION */
+
+.social-proof {
+  background-color: hsl(var(--si-fuscous-gray-50));
+  background-image: url(../img/patterns-by-magicpattern/yellow-squares-social-proof-pattern.png),
+    url(../img/gradients/social-proof-gradient-by-devbarcode.png);
+  background-size: cover, cover;
+  background-blend-mode: normal, color;
+  padding: max(3dvw, 0.5rem) 0;
+}
+
+.card-large {
+  max-width: 575px;
+}
+
+.card-h3-yellow {
+  font-family: var(--si-font-nunito-sans);
+  font-size: var(--si-fluid-font-size-md);
+  font-weight: var(--si-font-weight-bold);
+  color: hsl(var(--si-selective-yellow-950));
+}
+
+.card-h4 {
+  font-family: var(--si-font-nunito-sans);
+  font-size: var(--si-fluid-font-size-base);
+  font-weight: var(--si-font-weight-light);
+}
+
+.social-proof-card-decoration {
+  width: 100%;
+  /* 48px → 60px */
+  height: clamp(3rem, 2.7273rem + 1.3636vw, 3.75rem);
+  background-color: hsl(var(--si-selective-yellow-100));
+  background-image: url(../img/patterns-by-magicpattern/yellow-diagonal-lines-social-proof-pattern.png);
+  background-size: cover;
+  border-bottom-left-radius: var(--border-radius-32);
+  border-bottom-right-radius: var(--border-radius-32);
+}
+
+.social-proof-text-wrapper {
+  padding-left: var(--space-s);
+}
+
+.social-proof-img {
+  min-width: 40px;
+}
+
+.review-img-1,
+.review-img-2,
+.review-img-3 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px dotted hsl(var(--si-selective-yellow-950));
+}
+
+.review-circle {
+  /* 58px → 64px */
+  width: clamp(3.625rem, 3.4886rem + 0.6818vw, 4rem);
+  height: clamp(3.625rem, 3.4886rem + 0.6818vw, 4rem);
+  border-radius: 50%;
+  background-color: hsl(var(--si-selective-yellow-200));
+  box-shadow: var(--si-shadow-brand-color-x0-y4-b4);
+}
+
+.social-review-number {
+  font-size: var(--si-fluid-font-size-md);
+  font-weight: var(--si-font-weight-bold);
+  color: hsl(var(--si-brand-color-mandy-950));
+}
+
+.social-star {
+  /* 14px → 20px */
+  width: clamp(0.875rem, 0.7386rem + 0.6818vw, 1.25rem);
+}
+
+.time {
+  font-weight: var(--si-font-weight-extra-light);
+}
+
+/* //////////////////////////////// */
+
+/* || MAIN - "OUR PRODUCTS" SECTION */
+
+.products {
+  background-color: hsl(var(--si-fuscous-gray-50));
+  background-image: url(../img/patterns-by-magicpattern/brand-circle-products-pattern.png),
+    url(../img/gradients/products-gradient-by-devbarcode.png);
+  background-size: cover, cover;
+  background-blend-mode: normal, color;
+  padding: max(3dvw, 0.5rem) 0;
+}
+
+.img-border {
+  border-radius: var(--border-radius-32);
+}
+.img-shadow {
+  box-shadow: var(--si-shadow-brand-color-x0-y4-b4);
+}
+
+.btn-wrapper {
+  width: 100%;
+}
+
+.btn-soda-ipsum-product {
+  width: 90%;
+}
+
+.container-products {
+  padding: 0;
+}
+
+/* //////////////////////////////// */
+
+/* || FOOTER */
+
+.footer {
+  margin: 0 auto;
+  max-width: 1470px;
+}
+
+.footer-box-shadow {
+  box-shadow: var(--si-shadow-brand-footer-x0-yn5-b25);
+}
+
+.footer-h2 {
+  font-family: var(--si-font-nunito-sans);
+  font-weight: var(--si-font-weight-bold);
+}
+
+.footer-h3 {
+  font-family: var(--si-font-nunito-sans);
+  font-weight: var(--si-font-weight-regular);
+  font-size: var(--si-fluid-font-size-base);
+  color: hsl(var(--si-fuscous-gray-500));
+}
+
+.footer-link {
+  font-family: var(--si-font-inter);
+  font-weight: var(--si-font-weight-bold);
+  font-size: var(--si-fluid-font-size-md);
+  color: hsl(var(--si-fuscous-gray-500));
+}
+
+.footer-container {
+  border-top: 1px solid hsl(var(--si-fuscous-gray-200));
+  border-bottom: 1px solid hsl(var(--si-fuscous-gray-200));
+}
+
+.social-footer-img {
+  width: auto;
+  height: 20px;
+}
+
+.watermark {
+  font-family: var(--si-font-inter);
+  font-weight: var(--si-font-weight-light);
+  font-size: var(--si-fluid-font-size-base);
+  color: hsl(var(--si-fuscous-gray-500));
+}
+
+.devBarcode-link {
+  font-weight: var(--si-font-weight-bold);
+  color: hsl(var(--si-brand-color-mandy-500));
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.devBarcode-link:hover,
+.devBarcode-link:focus-visible,
+.devBarcode-link:focus {
+  color: hsl(var(--si-brand-color-mandy-400));
+}
+
+.devBarcode-link:active {
+  color: hsl(var(--si-brand-color-mandy-600));
+}
